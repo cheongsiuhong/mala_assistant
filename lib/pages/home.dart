@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
 
-  final List<String> buttonNames = ["Friends", "Stores", "New Meal"];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,32 +19,34 @@ class Home extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, '/friends');
             },
-            child: nameToCard("Friends"),
+            child: nameToCard("Friends", Icon(Icons.person)),
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, '/stores');
             },
-            child: nameToCard("Stores"),
+            child: nameToCard("Stores", Icon(Icons.restaurant)),
           ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, '/meal');
             },
-            child: nameToCard("New Meal"),
+            child: nameToCard("New Meal", Icon(Icons.fastfood)),
           ),
         ],
       )
     );
   }
 
-  Card nameToCard(String name) {
+  Card nameToCard(String name, Icon icon) {
     return new Card(
         margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Center(
-              child: Text(
+              child: ListTile(
+                leading: icon,
+                title:Text(
                   name,
                   style: TextStyle(
                     color: Colors.white,
@@ -54,6 +54,7 @@ class Home extends StatelessWidget {
                     letterSpacing: 1.0,
                     fontWeight: FontWeight.bold,
                   )
+                ),
               )
           ),
         ),
