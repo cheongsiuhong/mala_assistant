@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/storePage.dart';
 import 'package:mala_assistant/store/store.dart';
 
-class Stores extends StatefulWidget {
+class SelectStore extends StatelessWidget {
   final List<Store> stores;
 
-  Stores({this.stores});
-
-  @override
-  _StoresState createState() => _StoresState();
-}
-
-class _StoresState extends State<Stores> {
-  List<Store> stores;
-
-  @override
-  void initState() {
-    stores = widget.stores;
-    super.initState();
-  }
+  SelectStore({this.stores});
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +34,6 @@ class _StoresState extends State<Stores> {
     child: ListTile(
       title: Text(store.name),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => StorePage(store: store)));
       },
     ),
   );
