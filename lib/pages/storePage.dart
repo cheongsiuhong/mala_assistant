@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/store/foodtype.dart';
 import 'package:mala_assistant/store/ingredient.dart';
 import 'package:mala_assistant/store/store.dart';
 
