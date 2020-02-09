@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mala_assistant/pages/addFriend.dart';
 import 'package:mala_assistant/pages/friend.dart';
+import 'package:mala_assistant/pages/friendPage.dart';
 
 class Friends extends StatefulWidget {
   @override
@@ -29,8 +30,15 @@ class _FriendsState extends State<Friends> {
           itemCount: malaFriends.length,
           itemBuilder: (context, index) {
             return Card(
-              child:
-                  ListTile(onTap: () {}, title: Text(malaFriends[index].name)),
+              child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                FriendPage(friend: malaFriends[index])));
+                  },
+                  title: Text(malaFriends[index].name)),
             );
           }),
       floatingActionButton: new FloatingActionButton(

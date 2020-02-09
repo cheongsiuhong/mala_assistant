@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:mala_assistant/pages/friend.dart';
 
@@ -19,16 +17,6 @@ class _AddFriendState extends State<AddFriend> {
   int _formSpiceValue = 2;
   double _formBudgetValue;
   int _formAppetiteValue = 1;
-
-  List<String> spiceList = [
-    "No Spice",
-    "Less Spicy",
-    "Normal Spicy",
-    "Extra Spicy",
-    "Super Spicy"
-  ];
-
-  List<String> appetiteList = ["Small", "Average", "Large"];
 
   void setSpice(int val) {
     setState(() => _formSpiceValue = val);
@@ -66,13 +54,13 @@ class _AddFriendState extends State<AddFriend> {
                     onSaved: (val) => _formNameValue = val,
                   ),
                   new DropdownButtonFormField(
-                    value: spiceList[_formSpiceValue],
+                    value: Friend.spiceList[_formSpiceValue],
                     decoration: const InputDecoration(labelText: 'Spice Level'),
                     items:
-                        spiceList.map<DropdownMenuItem<String>>((String val) {
+                        Friend.spiceList.map<DropdownMenuItem<String>>((String val) {
                       return new DropdownMenuItem(child: Text(val), value: val);
                     }).toList(),
-                    onChanged: (String val) => setSpice(spiceList.indexOf(val)),
+                    onChanged: (String val) => setSpice(Friend.spiceList.indexOf(val)),
                   ),
                   new TextFormField(
                     decoration: const InputDecoration(
@@ -90,14 +78,14 @@ class _AddFriendState extends State<AddFriend> {
                     onSaved: (val) => _formBudgetValue = double.parse(val),
                   ),
                   new DropdownButtonFormField(
-                    value: appetiteList[_formAppetiteValue],
+                    value: Friend.appetiteList[_formAppetiteValue],
                     decoration: const InputDecoration(labelText: 'Appetite'),
-                    items: appetiteList
+                    items: Friend.appetiteList
                         .map<DropdownMenuItem<String>>((String val) {
                       return new DropdownMenuItem(child: Text(val), value: val);
                     }).toList(),
                     onChanged: (String val) =>
-                        setAppetite(appetiteList.indexOf(val)),
+                        setAppetite(Friend.appetiteList.indexOf(val)),
                   ),
                   new Container(
                       padding: const EdgeInsets.only(left: 40.0, top: 20.0),
