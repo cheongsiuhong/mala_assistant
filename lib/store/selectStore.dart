@@ -14,26 +14,27 @@ class SelectStore extends StatelessWidget {
         shrinkWrap: true,
         itemCount: stores.length,
         itemBuilder: (BuildContext context, int index) {
-          return makeCard(stores[index]);
+          return makeCard(context, stores[index]);
         },
       ),
     );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Stores"),
+        title: Text("Select a Store"),
         backgroundColor: Colors.red,
       ),
       body: makeStoreList,
     );
   }
 
-  Card makeCard(Store store) => Card(
+  Card makeCard(BuildContext context, Store store) => Card(
     elevation: 8.0,
     margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
     child: ListTile(
       title: Text(store.name),
       onTap: () {
+        Navigator.pop(context, store);
       },
     ),
   );

@@ -4,6 +4,8 @@ class Friend {
   double budget;
   int appetite;
 
+  static final Friend defaultFriend = new Friend(name: 'Eugene', spiceLevel: 1, appetite: 2, budget: 10);
+
   static final List<String> spiceList = [
     "No Spice",
     "Less Spicy",

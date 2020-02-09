@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/addFriend.dart';
-import 'package:mala_assistant/pages/friend.dart';
-import 'package:mala_assistant/pages/friendPage.dart';
+import 'package:mala_assistant/friends/addFriend.dart';
+import 'package:mala_assistant/friends/friend.dart';
+import 'package:mala_assistant/friends/friendPage.dart';
 
-class Friends extends StatefulWidget {
+class FriendsView extends StatefulWidget {
+  final List<Friend> friends;
+
+  FriendsView({this.friends});
+
   @override
-  _FriendsState createState() => _FriendsState();
+  _FriendsViewState createState() => _FriendsViewState();
 }
 
-class _FriendsState extends State<Friends> {
-  List<Friend> malaFriends = [
-    Friend(name: 'Eugene', spiceLevel: 1, appetite: 2, budget: 10)
-  ];
+class _FriendsViewState extends State<FriendsView> {
+  List<Friend> malaFriends;
+
+  @override
+  void initState() {
+    this.malaFriends = widget.friends;
+    super.initState();
+  }
 
   void addFriend(Friend friend) {
     setState(() => malaFriends.add(friend));
@@ -48,6 +56,7 @@ class _FriendsState extends State<Friends> {
                 MaterialPageRoute(
                     builder: (context) => new AddFriend(addFriend: addFriend)));
           },
+          backgroundColor: Colors.red[900],
           tooltip: 'Add Friend',
           child: new Icon(Icons.add)),
     );

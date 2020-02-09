@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/friend.dart';
+import 'package:mala_assistant/friends/friend.dart';
 
 class AddFriend extends StatefulWidget {
   final Function(Friend) addFriend;
@@ -17,6 +17,9 @@ class _AddFriendState extends State<AddFriend> {
   int _formSpiceValue = 2;
   double _formBudgetValue;
   int _formAppetiteValue = 1;
+
+  final RegExp dollarExp = new RegExp(
+    r'(([1-9]\d{0,2}(,\d{3})*)|(([1-9]\d*)?\d))(\.\d\d)?$');
 
   void setSpice(int val) {
     setState(() => _formSpiceValue = val);
@@ -70,7 +73,7 @@ class _AddFriendState extends State<AddFriend> {
                       if (value.isEmpty) {
                         return 'Budget should not be empty';
                       }
-                      if (double.parse(value) == null) {
+                      if (!dollarExp.hasMatch(value)) {
                         return 'Budget should be a decimal number';
                       }
                       return null;

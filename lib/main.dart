@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/splash.dart';
-import 'package:mala_assistant/pages/home.dart';
-import 'package:mala_assistant/pages/friendsPage.dart';
-import 'package:mala_assistant/pages/selectStore.dart';
-import 'package:mala_assistant/pages/stores.dart';
+import 'package:mala_assistant/friends/friend.dart';
+import 'package:mala_assistant/pages/splashView.dart';
+import 'package:mala_assistant/pages/homeView.dart';
+import 'package:mala_assistant/pages/friendsView.dart';
+import 'package:mala_assistant/pages/mealView.dart';
+import 'package:mala_assistant/pages/storesView.dart';
 import 'package:mala_assistant/store/store.dart';
 import 'package:mala_assistant/store/defaultStore.dart';
 
 List<Store> stores = [new DefaultStore()];
+List<Friend> friends = [Friend.defaultFriend];
 
 void main() => runApp(MaterialApp(initialRoute: '/', routes: {
-      '/': (context) => Splash(),
-      '/home': (context) => Home(),
-      '/stores': (context) => Stores(stores: stores),
-      '/friends': (context) => Friends(),
-      '/meal': (context) => SelectStore(stores: stores),
+      '/': (context) => SplashView(),
+      '/home': (context) => HomeView(),
+      '/stores': (context) => StoresView(stores: stores),
+      '/friends': (context) => FriendsView(friends: friends),
+      '/meal': (context) => MealView(stores: stores, friends: friends),
     }));

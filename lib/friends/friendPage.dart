@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/friend.dart';
+import 'package:mala_assistant/friends/friend.dart';
 
 class FriendPage extends StatelessWidget {
   final Friend friend;

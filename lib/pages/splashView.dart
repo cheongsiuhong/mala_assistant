@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Splash extends StatefulWidget {
+class SplashView extends StatefulWidget {
 
 
   @override
-  _SplashState createState() => _SplashState();
+  _SplashViewState createState() => _SplashViewState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashViewState extends State<SplashView> {
 
   @override
   void initState() {

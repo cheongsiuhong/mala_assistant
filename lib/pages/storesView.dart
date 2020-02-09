@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mala_assistant/pages/storePage.dart';
+import 'package:mala_assistant/store/storePage.dart';
 import 'package:mala_assistant/store/store.dart';
 
-class Stores extends StatefulWidget {
+class StoresView extends StatefulWidget {
   final List<Store> stores;
 
-  Stores({this.stores});
+  StoresView({this.stores});
 
   @override
-  _StoresState createState() => _StoresState();
+  _StoresViewState createState() => _StoresViewState();
 }
 
-class _StoresState extends State<Stores> {
+class _StoresViewState extends State<StoresView> {
   List<Store> stores;
 
   @override
