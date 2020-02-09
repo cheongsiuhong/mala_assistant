@@ -33,9 +33,22 @@ class _SelectFriendsState extends State<SelectFriends> {
     );
   }
 
+  List<Friend> selectedFriends() {
+    List<Friend> res = [];
+    for (var i = 0; i < friends.length; i++) {
+      if (isSelected[i]) res.add(friends[i]);
+    }
+    return res;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushNamed(context, "/home");
+        return Future.value(false);
+      },
+      child: Scaffold(
         appBar: new AppBar(
           title: Text('Select Friends'),
           backgroundColor: Colors.red,
@@ -46,6 +59,15 @@ class _SelectFriendsState extends State<SelectFriends> {
             itemCount: friends.length,
             itemBuilder: (context, index) {
               return createCheckBox(friends[index], index);
-            }));
+            }),
+        floatingActionButton: new FloatingActionButton(
+            onPressed: () {
+              Navigator.pop(context, selectedFriends());
+            },
+            backgroundColor: Colors.red[900],
+            tooltip: 'Done selecting',
+            child: new Icon(Icons.check)),
+      ),
+    );
   }
 }

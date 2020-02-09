@@ -18,6 +18,7 @@ class _MealViewState extends State<MealView> {
   List<Store> stores;
   List<Friend> friends;
   Store store;
+  List<Friend> selectedFriends;
 
   @override
   void initState() {
@@ -28,7 +29,7 @@ class _MealViewState extends State<MealView> {
       store = await Navigator.push(context,
           MaterialPageRoute(builder: (context) => SelectStore(stores: stores)));
     }).whenComplete(() async {
-      store = await Navigator.push(
+      selectedFriends = await Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => SelectFriends(friends: friends)));
@@ -37,6 +38,20 @@ class _MealViewState extends State<MealView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: new AppBar(
+        title: Text('Order Meal'),
+        backgroundColor: Colors.red,
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: Row(
+        children: <Widget>[
+          Text(
+            "Eating with ${selectedFriends.map((Friend friend) => friend.name).join(", ")}\n at ${store.name}"
+          )
+        ],
+      )
+    );
   }
 }

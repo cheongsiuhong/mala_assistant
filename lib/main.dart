@@ -9,7 +9,7 @@ import 'package:mala_assistant/store/store.dart';
 import 'package:mala_assistant/store/defaultStore.dart';
 
 List<Store> stores = [new DefaultStore()];
-List<Friend> friends = [Friend.defaultFriend];
+List<Friend> friends = Friend.defaultFriends;
 
 void main() => runApp(MaterialApp(initialRoute: '/', routes: {
       '/': (context) => SplashView(),

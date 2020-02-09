@@ -19,12 +19,18 @@ class SelectStore extends StatelessWidget {
       ),
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Select a Store"),
-        backgroundColor: Colors.red,
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushNamed(context, "/home");
+        return Future.value(false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Select a Store"),
+          backgroundColor: Colors.red,
+        ),
+        body: makeStoreList,
       ),
-      body: makeStoreList,
     );
   }
 
