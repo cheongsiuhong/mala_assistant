@@ -43,16 +43,16 @@ class _StoresState extends State<Stores> {
   }
 
   Card makeCard(Store store) => Card(
-    elevation: 8.0,
-    margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-    child: ListTile(
-      title: Text(store.name),
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => StorePage(store: store)));
-      },
-    ),
-  );
+        elevation: 8.0,
+        margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        child: ListTile(
+          title: Text(store.name),
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => StorePage(store: store)));
+          },
+        ),
+      );
 }

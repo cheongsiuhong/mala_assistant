@@ -4,6 +4,5 @@ class Friend {
   double budget;
   int appetite;
 
-  Friend(
-      {this.name, this.spiceLevel, this.appetite, this.budget});
+  Friend({this.name, this.spiceLevel, this.appetite, this.budget});
 }
