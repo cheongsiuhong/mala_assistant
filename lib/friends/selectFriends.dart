@@ -3,8 +3,9 @@ import 'package:mala_assistant/friends/friend.dart';
 
 class SelectFriends extends StatefulWidget {
   final List<Friend> friends;
+  final Function(List<Friend>) setSelectedFriends;
 
-  SelectFriends({this.friends});
+  SelectFriends({@required this.friends, @required this.setSelectedFriends});
 
   @override
   _SelectFriendsState createState() => _SelectFriendsState();
@@ -43,31 +44,42 @@ class _SelectFriendsState extends State<SelectFriends> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        Navigator.pushNamed(context, "/home");
-        return Future.value(false);
-      },
-      child: Scaffold(
-        appBar: new AppBar(
-          title: Text('Select Friends'),
-          backgroundColor: Colors.red,
-          elevation: 0.0,
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-            itemCount: friends.length,
-            itemBuilder: (context, index) {
-              return createCheckBox(friends[index], index);
-            }),
-        floatingActionButton: new FloatingActionButton(
-            onPressed: () {
-              Navigator.pop(context, selectedFriends());
-            },
-            backgroundColor: Colors.red[900],
-            tooltip: 'Done selecting',
-            child: new Icon(Icons.check)),
+    return Scaffold(
+      appBar: new AppBar(
+        title: Text('Select Friends'),
+        backgroundColor: Colors.red,
+        elevation: 0.0,
+        centerTitle: true,
       ),
+      body: ListView.builder(
+          itemCount: friends.length,
+          itemBuilder: (context, index) {
+            return createCheckBox(friends[index], index);
+          }),
+      floatingActionButton: new FloatingActionButton(
+          onPressed: () {
+            if (isSelected.any((val) => val)) {
+              widget.setSelectedFriends(selectedFriends());
+            } else {
+              showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text("Lonely?"),
+                        content: Text("Select at least yourself!"),
+                        actions: <Widget>[
+                          new FlatButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("Close"))
+                        ],
+                      ),
+                  barrierDismissible: true);
+            }
+          },
+          backgroundColor: Colors.red[900],
+          tooltip: 'Done selecting',
+          child: new Icon(Icons.check)),
     );
   }
 }

@@ -3,8 +3,9 @@ import 'package:mala_assistant/store/store.dart';
 
 class SelectStore extends StatelessWidget {
   final List<Store> stores;
+  final Function(Store) setStore;
 
-  SelectStore({this.stores});
+  SelectStore({@required this.stores, @required this.setStore});
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +20,23 @@ class SelectStore extends StatelessWidget {
       ),
     );
 
-    return WillPopScope(
-      onWillPop: () {
-        Navigator.pushNamed(context, "/home");
-        return Future.value(false);
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Select a Store"),
-          backgroundColor: Colors.red,
-        ),
-        body: makeStoreList,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Select a Store"),
+        backgroundColor: Colors.red,
       ),
+      body: makeStoreList,
     );
   }
 
   Card makeCard(BuildContext context, Store store) => Card(
-    elevation: 8.0,
-    margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-    child: ListTile(
-      title: Text(store.name),
-      onTap: () {
-        Navigator.pop(context, store);
-      },
-    ),
-  );
+        elevation: 8.0,
+        margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        child: ListTile(
+          title: Text(store.name),
+          onTap: () {
+            setStore(store);
+          },
+        ),
+      );
 }
