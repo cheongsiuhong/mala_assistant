@@ -6,9 +6,8 @@ import 'package:mala_assistant/pages/friendsView.dart';
 import 'package:mala_assistant/pages/mealView.dart';
 import 'package:mala_assistant/pages/storesView.dart';
 import 'package:mala_assistant/store/store.dart';
-import 'package:mala_assistant/store/defaultStore.dart';
 
-final List<Store> stores = [new DefaultStore()];
+final List<Store> stores = Store.defaultStores;
 final List<Friend> friends = Friend.defaultFriends;
 
 void main() => runApp(MaterialApp(initialRoute: '/', routes: {

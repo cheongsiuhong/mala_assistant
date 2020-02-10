@@ -95,14 +95,31 @@ class _AddFriendState extends State<AddFriend> {
                       child: new RaisedButton(
                         child: const Text('Submit'),
                         onPressed: () {
-                          final FormState form = _formKey.currentState;
-                          form.save();
-                          widget.addFriend(new Friend(
-                              name: _formNameValue,
-                              spiceLevel: _formSpiceValue + 1,
-                              appetite: _formAppetiteValue + 1,
-                              budget: _formBudgetValue));
-                          Navigator.pop(context);
+                          if (_formKey.currentState.validate()) {
+                            final FormState form = _formKey.currentState;
+                            form.save();
+                            widget.addFriend(new Friend(
+                                name: _formNameValue,
+                                spiceLevel: _formSpiceValue + 1,
+                                appetite: _formAppetiteValue + 1,
+                                budget: _formBudgetValue));
+                            Navigator.pop(context);
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (_) => AlertDialog(
+                                  title: Text("Error"),
+                                  content: Text("Check that all fields are valid."),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text("Close"))
+                                  ],
+                                ),
+                                barrierDismissible: true);
+                          }
                         },
                       ))
                 ])));

@@ -7,7 +7,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-            child: Text("Mala Assistant :)")
+            child: Text("Mala Assistant")
         ),
         backgroundColor: Colors.red,
       ),
