@@ -30,7 +30,7 @@ class Store {
     new Ingredient(name: "Oyster Mushroom", price: 1.50, type: FoodType.mushroom),
   ];
 
-  static final String _store2 = "Somerset FoodCourt Ma;a";
+  static final String _store2 = "Somerset FoodCourt Mala";
   static final List<Ingredient> _ingredients2 = [
     new Ingredient(name: "Rice", price: 1.00, type: FoodType.carb),
     new Ingredient(name: "Maggi", price: 2.00, type: FoodType.carb),
